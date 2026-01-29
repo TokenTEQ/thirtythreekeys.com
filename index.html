@@ -49,8 +49,9 @@
       letter-spacing: 0.2px;
     }
 
+    /* MORE SPACE below subtitle (fix for Book One hover collision) */
     .sub{
-      margin: 0 auto 22px auto;
+      margin: 0 auto 42px auto;
       max-width: 820px;
       font-style: italic;
       color: var(--muted);
@@ -64,6 +65,7 @@
       width: 920px;
       height: 920px;
       margin: 0 auto 18px auto;
+      padding-top: 24px; /* extra hover buffer above circle */
     }
 
     .book{
@@ -91,7 +93,7 @@
     /* Hover enlarge */
     .book:hover{ z-index: 50 !important; }
     .book:hover img{
-      transform: scale(1.08);
+      transform: scale(1.08) translateY(4px); /* slight downward drift on hover */
       box-shadow: var(--shadowHover);
     }
 
@@ -114,10 +116,7 @@
     .b9  { transform: translate(-50%,-50%) rotate(288deg) translate(0,-360px) rotate(-288deg); }
     .b10 { transform: translate(-50%,-50%) rotate(324deg) translate(0,-360px) rotate(-324deg); }
 
-    /* ===== Overlap direction control =====
-       “Other direction” means invert stacking.
-       Higher z-index = on top.
-       Here, earlier books sit on top of later books (reverse stack). */
+    /* ===== Overlap direction control (reversed stacking) ===== */
     .b1  { z-index: 20; }
     .b2  { z-index: 19; }
     .b3  { z-index: 18; }
@@ -158,6 +157,11 @@
       box-shadow: var(--shadowHover);
     }
 
+    .center:focus-visible{
+      outline: 3px solid rgba(15,71,97,0.26);
+      outline-offset: 6px;
+    }
+
     /* Quote */
     .quote{
       margin: 16px auto 0 auto;
@@ -186,7 +190,7 @@
     }
 
     @media (max-width: 980px){
-      .circle{ width: 92vw; height: 92vw; }
+      .circle{ width: 92vw; height: 92vw; padding-top: 18px; }
       .book{ width: 15.5vw; max-width: 160px; min-width: 110px; }
       .center{ width: 20vw; max-width: 220px; min-width: 150px; }
 
@@ -210,13 +214,12 @@
     <section class="card" aria-label="Thirty Three Keys previews">
       <h1>Thirty Three Keys</h1>
       <p class="sub">
-        Click a cover to open its preview PDF.
+        Click a cover to open its preview PDF. Only Book One is available right now.
       </p>
 
       <div class="circle" aria-label="Series preview wheel">
-
         <!-- BOOKS 1–10 -->
-        <!-- File naming pattern you requested: "Thirty Three Keys - Book X Preview.pdf" -->
+        <!-- Filename pattern: "Thirty Three Keys - Book X Preview.pdf" -->
         <a class="book b1"  href="Thirty%20Three%20Keys%20-%20Book%201%20Preview.pdf"  target="_blank" rel="noopener">
           <img src="covers/1.png" alt="Book One – Digital Trust Infrastructure (Preview)" loading="eager">
         </a>
@@ -258,11 +261,9 @@
         </a>
 
         <!-- TEACHER’S GUIDE (Book 11) -->
-        <!-- Same pattern, if you want: "Thirty Three Keys - Book 11 Preview.pdf" -->
         <a class="center" href="Thirty%20Three%20Keys%20-%20Book%2011%20Preview.pdf" target="_blank" rel="noopener">
           <img src="covers/11.png" alt="Master Class Teacher’s Guide (Preview)" loading="lazy">
         </a>
-
       </div>
 
       <blockquote class="quote">
@@ -279,4 +280,3 @@
   </script>
 </body>
 </html>
-s
