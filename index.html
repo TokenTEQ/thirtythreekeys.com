@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thirty Three Keys | Book One Preview</title>
+  <meta name="description" content="Preview Book One of the Thirty Three Keys series: Digital Trust Infrastructure." />
+
+  <style>
+    :root{
+      --ink:#0F4761;
+      --muted: rgba(15,71,97,0.78);
+      --bg:#ffffff;
+      --card:#ffffff;
+      --border: rgba(15,71,97,0.16);
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap{
+      min-height: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 48px 18px;
+    }
+
+    .card{
+      width: min(920px, 100%);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 34px 22px;
+      text-align:center;
+    }
+
+    h1{
+      margin: 0 0 6px 0;
+      font-size: clamp(30px, 4vw, 44px);
+      letter-spacing: 0.2px;
+    }
+
+    .sub{
+      margin: 0 0 26px 0;
+      color: var(--muted);
+      font-style: italic;
+      font-size: clamp(16px, 2.2vw, 20px);
+      line-height: 1.35;
+    }
+
+    .cover-link{
+      display:inline-block;
+      border-radius: 12px;
+      outline: none;
+    }
+
+    .cover{
+      width: min(520px, 92vw);
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      transition: transform 140ms ease, box-shadow 140ms ease;
+    }
+
+    .cover-link:hover .cover,
+    .cover-link:focus-visible .cover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+    }
+
+    .cta{
+      margin-top: 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .cta strong{
+      color: var(--ink);
+      letter-spacing: 0.3px;
+    }
+
+    .quote{
+      margin: 26px auto 0 auto;
+      width: min(720px, 92vw);
+      padding: 18px 18px;
+      border-left: 4px solid var(--ink);
+      background: rgba(15,71,97,0.04);
+      border-radius: 10px;
+      text-align:left;
+      font-size: 17px;
+      line-height: 1.55;
+      color: rgba(15,71,97,0.92);
+    }
+
+    .quote span{
+      display:block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .footer{
+      margin-top: 22px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    a{ color: inherit; }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card" aria-label="Thirty Three Keys preview">
+      <h1>Thirty Three Keys</h1>
+      <p class="sub">Click the cover to open the Book One preview PDF.</p>
+
+      <a
+        class="cover-link"
+        href="Thirty%20Three%20Keys%20-%20Book%201%20Preview.pdf"
+        target="_blank"
+        rel="noopener"
+        aria-label="Open Book One preview PDF"
+      >
+        <img
+          class="cover"
+          src="Book_One_Preview.png"
+          alt="Thirty Three Keys, Book One: Digital Trust Infrastructure cover"
+          loading="eager"
+        />
+      </a>
+
+      <div class="cta"><strong>Open Preview PDF</strong> (new tab)</div>
+
+      <blockquote class="quote">
+        “Just as the thirty three vertebrae support the human body, the Keys in each volume support the conceptual structure of this series. Together they form the backbone for understanding the unseen architecture that shapes the digital world.”
+        <span>Matthew Shepley</span>
+      </blockquote>
+
+      <div class="footer">© <span id="year"></span> Thirty Three Keys</div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
