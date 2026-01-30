@@ -53,14 +53,16 @@
       font-style: italic;
       color: var(--muted);
       font-size: clamp(16px, 2.2vw, 20px);
+      line-height: 1.4;
     }
 
+    /* ===== Circle Layout ===== */
     .circle{
       position: relative;
       width: 920px;
       height: 920px;
       margin: 0 auto 18px auto;
-      padding-top: 24px;
+      padding-top: 24px; /* extra hover buffer above circle */
     }
 
     .book{
@@ -70,14 +72,18 @@
       width:170px;
       transform-origin:center center;
       cursor:pointer;
+      border-radius: 10px;
     }
 
     .book img{
       width:100%;
+      height:auto;
+      display:block;
       border-radius:8px;
       border:1px solid var(--border);
       box-shadow:0 10px 22px rgba(0,0,0,0.10);
       transition: transform 160ms ease, box-shadow 160ms ease;
+      background:#fff;
     }
 
     .book:hover{ z-index:50; }
@@ -86,7 +92,12 @@
       box-shadow: var(--shadowHover);
     }
 
-    /* Circle positions */
+    .book:focus-visible{
+      outline: 3px solid rgba(15,71,97,0.26);
+      outline-offset: 6px;
+    }
+
+    /* Circle positions (Book One at top, clockwise) */
     .b1  { transform: translate(-50%,-50%) rotate(0deg)   translate(0,-360px); }
     .b2  { transform: translate(-50%,-50%) rotate(36deg)  translate(0,-360px); }
     .b3  { transform: translate(-50%,-50%) rotate(72deg)  translate(0,-360px); }
@@ -98,6 +109,19 @@
     .b9  { transform: translate(-50%,-50%) rotate(288deg) translate(0,-360px); }
     .b10 { transform: translate(-50%,-50%) rotate(324deg) translate(0,-360px); }
 
+    /* Overlap direction control (reverse stacking) */
+    .b1  { z-index: 20; }
+    .b2  { z-index: 19; }
+    .b3  { z-index: 18; }
+    .b4  { z-index: 17; }
+    .b5  { z-index: 16; }
+    .b6  { z-index: 15; }
+    .b7  { z-index: 14; }
+    .b8  { z-index: 13; }
+    .b9  { z-index: 12; }
+    .b10 { z-index: 11; }
+
+    /* Center Teacher’s Guide (Book 11) */
     .center{
       position:absolute;
       top:50%;
@@ -107,7 +131,7 @@
       z-index:40;
     }
 
-    /* Modal */
+    /* ===== Modal ===== */
     .modal{
       position:fixed;
       inset:0;
@@ -116,15 +140,18 @@
       align-items:center;
       justify-content:center;
       z-index:1000;
+      padding: 18px;
     }
 
     .modal-content{
       background:#fff;
       padding:34px 28px;
       border-radius:14px;
-      max-width:420px;
+      max-width:440px;
+      width: min(440px, 100%);
       text-align:center;
       box-shadow:0 20px 40px rgba(0,0,0,0.2);
+      border: 1px solid var(--border);
     }
 
     .modal-content h2{
@@ -136,6 +163,7 @@
       margin:0;
       font-size:16px;
       color:var(--muted);
+      line-height: 1.4;
     }
 
     .modal-close{
@@ -146,24 +174,33 @@
       background:#fff;
       cursor:pointer;
       font-family:inherit;
+      color: var(--ink);
     }
 
+    .modal-close:hover{
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+    }
+
+    /* ===== Centered Quote ===== */
     .quote{
-      margin:16px auto 0;
+      margin:16px auto 0 auto;
       width:min(860px,96%);
-      padding:18px;
-      border-left:4px solid var(--ink);
+      padding:22px 20px;
+      border-left:none;
       background:rgba(15,71,97,0.04);
       border-radius:10px;
-      text-align:left;
+      text-align:center;
       font-size:17px;
+      line-height:1.55;
+      color: rgba(15,71,97,0.92);
     }
 
     .quote span{
       display:block;
-      margin-top:10px;
+      margin-top:12px;
       font-size:14px;
       color:var(--muted);
+      text-align:center;
     }
 
     .footer{
@@ -171,63 +208,135 @@
       font-size:13px;
       color:var(--muted);
     }
+
+    @media (max-width: 980px){
+      .circle{ width: 92vw; height: 92vw; padding-top: 18px; }
+      .book{ width: 15.5vw; max-width: 160px; min-width: 110px; }
+      .center{ width: 20vw; max-width: 220px; min-width: 150px; }
+
+      /* tighter radius on smaller screens */
+      .b1  { transform: translate(-50%,-50%) rotate(0deg)   translate(0,-33vw); }
+      .b2  { transform: translate(-50%,-50%) rotate(36deg)  translate(0,-33vw); }
+      .b3  { transform: translate(-50%,-50%) rotate(72deg)  translate(0,-33vw); }
+      .b4  { transform: translate(-50%,-50%) rotate(108deg) translate(0,-33vw); }
+      .b5  { transform: translate(-50%,-50%) rotate(144deg) translate(0,-33vw); }
+      .b6  { transform: translate(-50%,-50%) rotate(180deg) translate(0,-33vw); }
+      .b7  { transform: translate(-50%,-50%) rotate(216deg) translate(0,-33vw); }
+      .b8  { transform: translate(-50%,-50%) rotate(252deg) translate(0,-33vw); }
+      .b9  { transform: translate(-50%,-50%) rotate(288deg) translate(0,-33vw); }
+      .b10 { transform: translate(-50%,-50%) rotate(324deg) translate(0,-33vw); }
+    }
   </style>
 </head>
 
 <body>
-<main class="wrap">
-<section class="card">
-  <h1>Thirty Three Keys</h1>
-  <p class="sub">Click a cover to open its preview PDF.</p>
+  <main class="wrap">
+    <section class="card" aria-label="Thirty Three Keys previews">
+      <h1>Thirty Three Keys</h1>
+      <p class="sub">Click a cover to open its preview. Book One is available now.</p>
 
-  <div class="circle">
+      <div class="circle" aria-label="Series preview wheel">
 
-    <!-- Book One (real preview) -->
-    <a class="book b1" href="Thirty%20Three%20Keys%20-%20Book%201%20Preview.pdf" target="_blank">
-      <img src="covers/1.png" alt="Book One Preview">
-    </a>
+        <!-- Book One (real preview PDF) -->
+        <a class="book b1" href="Thirty%20Three%20Keys%20-%20Book%201%20Preview.pdf" target="_blank" rel="noopener">
+          <img src="covers/1.png" alt="Book One – Digital Trust Infrastructure (Preview)" loading="eager">
+        </a>
 
-    <!-- Books 2–10 -->
-    <div class="book b2" onclick="openModal()"><img src="covers/2.png"></div>
-    <div class="book b3" onclick="openModal()"><img src="covers/3.png"></div>
-    <div class="book b4" onclick="openModal()"><img src="covers/4.png"></div>
-    <div class="book b5" onclick="openModal()"><img src="covers/5.png"></div>
-    <div class="book b6" onclick="openModal()"><img src="covers/6.png"></div>
-    <div class="book b7" onclick="openModal()"><img src="covers/7.png"></div>
-    <div class="book b8" onclick="openModal()"><img src="covers/8.png"></div>
-    <div class="book b9" onclick="openModal()"><img src="covers/9.png"></div>
-    <div class="book b10" onclick="openModal()"><img src="covers/10.png"></div>
+        <!-- Books 2–10 (Coming Soon modal) -->
+        <div class="book b2"  role="button" tabindex="0" onclick="openModal('Book Two is coming soon.')"  onkeydown="keyOpen(event,'Book Two is coming soon.')">
+          <img src="covers/2.png" alt="Book Two (Coming Soon)" loading="lazy">
+        </div>
 
-    <!-- Teacher’s Guide -->
-    <div class="center book" onclick="openModal()">
-      <img src="covers/11.png" alt="Teacher’s Guide">
+        <div class="book b3"  role="button" tabindex="0" onclick="openModal('Book Three is coming soon.')" onkeydown="keyOpen(event,'Book Three is coming soon.')">
+          <img src="covers/3.png" alt="Book Three (Coming Soon)" loading="lazy">
+        </div>
+
+        <div class="book b4"  role="button" tabindex="0" onclick="openModal('Book Four is coming soon.')"  onkeydown="keyOpen(event,'Book Four is coming soon.')">
+          <img src="covers/4.png" alt="Book Four (Coming Soon)" loading="lazy">
+        </div>
+
+        <div class="book b5"  role="button" tabindex="0" onclick="openModal('Book Five is coming soon.')"  onkeydown="keyOpen(event,'Book Five is coming soon.')">
+          <img src="covers/5.png" alt="Book Five (Coming Soon)" loading="lazy">
+        </div>
+
+        <div class="book b6"  role="button" tabindex="0" onclick="openModal('Book Six is coming soon.')"   onkeydown="keyOpen(event,'Book Six is coming soon.')">
+          <img src="covers/6.png" alt="Book Six (Coming Soon)" loading="lazy">
+        </div>
+
+        <div class="book b7"  role="button" tabindex="0" onclick="openModal('Book Seven is coming soon.')" onkeydown="keyOpen(event,'Book Seven is coming soon.')">
+          <img src="covers/7.png" alt="Book Seven (Coming Soon)" loading="lazy">
+        </div>
+
+        <div class="book b8"  role="button" tabindex="0" onclick="openModal('Book Eight is coming soon.')" onkeydown="keyOpen(event,'Book Eight is coming soon.')">
+          <img src="covers/8.png" alt="Book Eight (Coming Soon)" loading="lazy">
+        </div>
+
+        <div class="book b9"  role="button" tabindex="0" onclick="openModal('Book Nine is coming soon.')"  onkeydown="keyOpen(event,'Book Nine is coming soon.')">
+          <img src="covers/9.png" alt="Book Nine (Coming Soon)" loading="lazy">
+        </div>
+
+        <div class="book b10" role="button" tabindex="0" onclick="openModal('Book Ten is coming soon.')"   onkeydown="keyOpen(event,'Book Ten is coming soon.')">
+          <img src="covers/10.png" alt="Book Ten (Coming Soon)" loading="lazy">
+        </div>
+
+        <!-- Teacher’s Guide (Book 11) -->
+        <div class="center book" role="button" tabindex="0" onclick="openModal('The Master Class Teacher’s Guide is coming soon.')" onkeydown="keyOpen(event,'The Master Class Teacher’s Guide is coming soon.')">
+          <img src="covers/11.png" alt="Master Class Teacher’s Guide (Coming Soon)" loading="lazy">
+        </div>
+
+      </div>
+
+      <blockquote class="quote">
+        “Just as the thirty three vertebrae support the human body, the Keys in each volume support the conceptual structure of this series. Together they form the backbone for understanding the unseen architecture that shapes the digital world.”
+        <span>Matthew Shepley</span>
+      </blockquote>
+
+      <div class="footer">© <span id="year"></span> Thirty Three Keys</div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+      <h2 id="modalTitle">Coming Soon</h2>
+      <p id="modalDesc">This volume is in preparation. Book One is available for preview now.</p>
+      <button class="modal-close" type="button" onclick="closeModal()">Close</button>
     </div>
-
   </div>
 
-  <blockquote class="quote">
-    “Just as the thirty three vertebrae support the human body, the Keys in each volume support the conceptual structure of this series. Together they form the backbone for understanding the unseen architecture that shapes the digital world.”
-    <span>Matthew Shepley</span>
-  </blockquote>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  <div class="footer">© <span id="year"></span> Thirty Three Keys</div>
-</section>
-</main>
+    function openModal(message){
+      var modal = document.getElementById("modal");
+      var desc = document.getElementById("modalDesc");
+      desc.textContent = message + " Book One is available for preview now.";
+      modal.style.display = "flex";
+      modal.setAttribute("aria-hidden", "false");
+    }
 
-<!-- Modal -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h2>Coming Soon</h2>
-    <p>This volume is in preparation.<br>Book One is available for preview now.</p>
-    <button class="modal-close" onclick="closeModal()">Close</button>
-  </div>
-</div>
+    function closeModal(){
+      var modal = document.getElementById("modal");
+      modal.style.display = "none";
+      modal.setAttribute("aria-hidden", "true");
+    }
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  function openModal(){ document.getElementById("modal").style.display="flex"; }
-  function closeModal(){ document.getElementById("modal").style.display="none"; }
-</script>
+    function keyOpen(e, message){
+      if(e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        openModal(message);
+      }
+    }
 
+    // Close modal if user clicks outside the dialog
+    document.getElementById("modal").addEventListener("click", function(e){
+      if(e.target.id === "modal"){ closeModal(); }
+    });
+
+    // Close modal on Escape
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape"){ closeModal(); }
+    });
+  </script>
 </body>
 </html>
