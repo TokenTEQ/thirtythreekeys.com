@@ -53,7 +53,6 @@
       font-style: italic;
       color: var(--muted);
       font-size: clamp(16px, 2.2vw, 20px);
-      line-height: 1.4;
     }
 
     /* ===== Circle Layout ===== */
@@ -61,7 +60,7 @@
       position: relative;
       width: 920px;
       height: 920px;
-      margin: 0 auto 36px auto; /* increased bottom spacing */
+      margin: 0 auto 36px auto;
       padding-top: 24px;
     }
 
@@ -72,18 +71,15 @@
       width:170px;
       transform-origin:center center;
       cursor:pointer;
-      border-radius: 10px;
     }
 
     .book img{
       width:100%;
-      height:auto;
-      display:block;
       border-radius:8px;
       border:1px solid var(--border);
+      background:#fff;
       box-shadow:0 10px 22px rgba(0,0,0,0.10);
       transition: transform 160ms ease, box-shadow 160ms ease;
-      background:#fff;
     }
 
     .book:hover{ z-index:50; }
@@ -92,7 +88,7 @@
       box-shadow: var(--shadowHover);
     }
 
-    /* Circle positions */
+    /* Circle positions + stacking */
     .b1  { transform: translate(-50%,-50%) rotate(0deg)   translate(0,-360px); z-index:20; }
     .b2  { transform: translate(-50%,-50%) rotate(36deg)  translate(0,-360px); z-index:19; }
     .b3  { transform: translate(-50%,-50%) rotate(72deg)  translate(0,-360px); z-index:18; }
@@ -111,18 +107,60 @@
       width:230px;
       transform: translate(-50%,-50%);
       z-index:40;
+    }
+
+    /* ===== Modal ===== */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:var(--overlay);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+    }
+
+    .modal-content{
+      background:#fff;
+      padding:34px 28px;
+      border-radius:14px;
+      max-width:420px;
+      text-align:center;
+      box-shadow:0 20px 40px rgba(0,0,0,0.2);
+      border:1px solid var(--border);
+    }
+
+    .modal-content h2{
+      margin:0 0 12px;
+      font-size:26px;
+    }
+
+    .modal-content p{
+      margin:0;
+      font-size:16px;
+      color:var(--muted);
+    }
+
+    .modal-close{
+      margin-top:18px;
+      padding:8px 18px;
+      border-radius:6px;
+      border:1px solid var(--border);
+      background:#fff;
       cursor:pointer;
+      font-family:inherit;
+      color:var(--ink);
     }
 
     /* ===== Quote ===== */
     .quote{
-      margin: 16px auto 0 auto;
+      margin:16px auto 0;
       width:min(860px,96%);
       padding:22px 20px;
       background:rgba(15,71,97,0.04);
       border-radius:10px;
       text-align:center;
-      font-size:15.5px;
+      font-size:15.5px; /* updated */
       line-height:1.55;
       color: rgba(15,71,97,0.92);
     }
@@ -139,66 +177,63 @@
       font-size:13px;
       color:var(--muted);
     }
-
-    @media (max-width: 980px){
-      .circle{ width:92vw; height:92vw; padding-top:18px; margin-bottom:32px; }
-      .book{ width:15.5vw; max-width:160px; min-width:110px; }
-      .center{ width:20vw; max-width:220px; min-width:150px; }
-
-      .b1  { transform: translate(-50%,-50%) rotate(0deg)   translate(0,-33vw); }
-      .b2  { transform: translate(-50%,-50%) rotate(36deg)  translate(0,-33vw); }
-      .b3  { transform: translate(-50%,-50%) rotate(72deg)  translate(0,-33vw); }
-      .b4  { transform: translate(-50%,-50%) rotate(108deg) translate(0,-33vw); }
-      .b5  { transform: translate(-50%,-50%) rotate(144deg) translate(0,-33vw); }
-      .b6  { transform: translate(-50%,-50%) rotate(180deg) translate(0,-33vw); }
-      .b7  { transform: translate(-50%,-50%) rotate(216deg) translate(0,-33vw); }
-      .b8  { transform: translate(-50%,-50%) rotate(252deg) translate(0,-33vw); }
-      .b9  { transform: translate(-50%,-50%) rotate(288deg) translate(0,-33vw); }
-      .b10 { transform: translate(-50%,-50%) rotate(324deg) translate(0,-33vw); }
-    }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
-    <section class="card">
-      <h1>Thirty Three Keys</h1>
-      <p class="sub">Click a cover to open its preview. Book One is available now.</p>
+<main class="wrap">
+<section class="card">
+  <h1>Thirty Three Keys</h1>
+  <p class="sub">Click a cover to open its preview. Book One is available now.</p>
 
-      <div class="circle">
+  <div class="circle">
 
-        <a class="book b1" href="Thirty%20Three%20Keys%20-%20Book%201%20Preview.pdf" target="_blank">
-          <img src="covers/1.png" alt="Book One Preview">
-        </a>
+    <!-- Book One -->
+    <a class="book b1" href="Thirty%20Three%20Keys%20-%20Book%201%20Preview.pdf" target="_blank">
+      <img src="covers/1.png" alt="Book One Preview">
+    </a>
 
-        <div class="book b2" onclick="openModal()"><img src="covers/2.png"></div>
-        <div class="book b3" onclick="openModal()"><img src="covers/3.png"></div>
-        <div class="book b4" onclick="openModal()"><img src="covers/4.png"></div>
-        <div class="book b5" onclick="openModal()"><img src="covers/5.png"></div>
-        <div class="book b6" onclick="openModal()"><img src="covers/6.png"></div>
-        <div class="book b7" onclick="openModal()"><img src="covers/7.png"></div>
-        <div class="book b8" onclick="openModal()"><img src="covers/8.png"></div>
-        <div class="book b9" onclick="openModal()"><img src="covers/9.png"></div>
-        <div class="book b10" onclick="openModal()"><img src="covers/10.png"></div>
+    <!-- Books 2–10 -->
+    <div class="book b2" onclick="openModal()"><img src="covers/2.png"></div>
+    <div class="book b3" onclick="openModal()"><img src="covers/3.png"></div>
+    <div class="book b4" onclick="openModal()"><img src="covers/4.png"></div>
+    <div class="book b5" onclick="openModal()"><img src="covers/5.png"></div>
+    <div class="book b6" onclick="openModal()"><img src="covers/6.png"></div>
+    <div class="book b7" onclick="openModal()"><img src="covers/7.png"></div>
+    <div class="book b8" onclick="openModal()"><img src="covers/8.png"></div>
+    <div class="book b9" onclick="openModal()"><img src="covers/9.png"></div>
+    <div class="book b10" onclick="openModal()"><img src="covers/10.png"></div>
 
-        <div class="center book" onclick="openModal()">
-          <img src="covers/11.png" alt="Teacher’s Guide">
-        </div>
+    <!-- Teacher’s Guide -->
+    <div class="center book" onclick="openModal()">
+      <img src="covers/11.png" alt="Teacher’s Guide">
+    </div>
 
-      </div>
+  </div>
 
-      <blockquote class="quote">
-        “Just as the thirty three vertebrae support the human body, the Keys in each volume support the conceptual structure of this series. Together they form the backbone for understanding the unseen architecture that shapes the digital world.”
-        <span>Matthew Shepley</span>
-      </blockquote>
+  <blockquote class="quote">
+    “Just as the thirty three vertebrae support the human body, the Keys in each volume support the conceptual structure of this series. Together they form the backbone for understanding the unseen architecture that shapes the digital world.”
+    <span>Matthew Shepley</span>
+  </blockquote>
 
-      <div class="footer">© <span id="year"></span> Thirty Three Keys</div>
-    </section>
-  </main>
+  <div class="footer">© <span id="year"></span> Thirty Three Keys</div>
+</section>
+</main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    function openModal(){ alert("Coming soon. Book One is available for preview now."); }
-  </script>
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2>Coming Soon</h2>
+    <p>This volume is in preparation. Book One is available for preview now.</p>
+    <button class="modal-close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  function openModal(){ document.getElementById("modal").style.display="flex"; }
+  function closeModal(){ document.getElementById("modal").style.display="none"; }
+</script>
+
 </body>
 </html>
