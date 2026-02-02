@@ -55,6 +55,50 @@
       font-size: clamp(16px, 2.2vw, 20px);
     }
 
+    /* ===== Added: Publisher context block (layout-safe) ===== */
+    .context{
+      width: min(860px, 96%);
+      margin: 0 auto 24px auto;
+      text-align:center;
+      color: rgba(15,71,97,0.92);
+    }
+
+    .context h2{
+      margin: 0 0 10px 0;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .context p{
+      margin: 0 auto 10px auto;
+      max-width: 860px;
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: rgba(15,71,97,0.92);
+    }
+
+    .context .meta{
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .context .meta strong{
+      color: rgba(15,71,97,0.92);
+      font-weight: 700;
+    }
+
+    .context a{
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15,71,97,0.28);
+    }
+
+    .context a:hover{
+      border-bottom-color: rgba(15,71,97,0.55);
+    }
+
     /* ===== Circle Layout ===== */
     .circle{
       position: relative;
@@ -160,7 +204,7 @@
       background:rgba(15,71,97,0.04);
       border-radius:10px;
       text-align:center;
-      font-size:15.5px; /* updated */
+      font-size:15.5px;
       line-height:1.55;
       color: rgba(15,71,97,0.92);
     }
@@ -186,6 +230,20 @@
   <h1>Thirty Three Keys</h1>
   <p class="sub">Click a cover to open its preview.</p>
 
+  <!-- ===== Added: Meaning + evaluation context (layout unchanged) ===== -->
+  <div class="context" aria-label="Series overview">
+    <h2>A multi-volume educational series with an integrated teaching framework</h2>
+    <p>
+      <em>Thirty Three Keys</em> is a multi-volume educational series on digital trust and institutional stability, designed as a structured learning sequence.
+      Each volume presents a defined set of Keys, while the <em>Master Class Teaching Guide</em> translates the full collection into a coherent curriculum for instructional use.
+    </p>
+    <p class="meta">
+      <strong>Book One preview:</strong> available now.
+      <strong>Volumes 2–10 and the Teaching Guide:</strong> in preparation.
+      <strong>Inquiries:</strong> <a href="mailto:publisher@thirtythreekeys.com">publisher@thirtythreekeys.com</a>
+    </p>
+  </div>
+
   <div class="circle">
 
     <!-- Book One -->
@@ -194,19 +252,19 @@
     </a>
 
     <!-- Books 2–10 -->
-    <div class="book b2" onclick="openModal()"><img src="covers/2.png"></div>
-    <div class="book b3" onclick="openModal()"><img src="covers/3.png"></div>
-    <div class="book b4" onclick="openModal()"><img src="covers/4.png"></div>
-    <div class="book b5" onclick="openModal()"><img src="covers/5.png"></div>
-    <div class="book b6" onclick="openModal()"><img src="covers/6.png"></div>
-    <div class="book b7" onclick="openModal()"><img src="covers/7.png"></div>
-    <div class="book b8" onclick="openModal()"><img src="covers/8.png"></div>
-    <div class="book b9" onclick="openModal()"><img src="covers/9.png"></div>
-    <div class="book b10" onclick="openModal()"><img src="covers/10.png"></div>
+    <div class="book b2" onclick="openModal()"><img src="covers/2.png" alt="Book Two (Coming Soon)"></div>
+    <div class="book b3" onclick="openModal()"><img src="covers/3.png" alt="Book Three (Coming Soon)"></div>
+    <div class="book b4" onclick="openModal()"><img src="covers/4.png" alt="Book Four (Coming Soon)"></div>
+    <div class="book b5" onclick="openModal()"><img src="covers/5.png" alt="Book Five (Coming Soon)"></div>
+    <div class="book b6" onclick="openModal()"><img src="covers/6.png" alt="Book Six (Coming Soon)"></div>
+    <div class="book b7" onclick="openModal()"><img src="covers/7.png" alt="Book Seven (Coming Soon)"></div>
+    <div class="book b8" onclick="openModal()"><img src="covers/8.png" alt="Book Eight (Coming Soon)"></div>
+    <div class="book b9" onclick="openModal()"><img src="covers/9.png" alt="Book Nine (Coming Soon)"></div>
+    <div class="book b10" onclick="openModal()"><img src="covers/10.png" alt="Book Ten (Coming Soon)"></div>
 
     <!-- Teacher’s Guide -->
     <div class="center book" onclick="openModal()">
-      <img src="covers/11.png" alt="Teacher’s Guide">
+      <img src="covers/11.png" alt="Teacher’s Guide (Coming Soon)">
     </div>
 
   </div>
