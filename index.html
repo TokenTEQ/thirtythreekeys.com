@@ -30,7 +30,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 44px 18px 56px;
+      padding: 44px 18px 64px;
     }
 
     .card{
@@ -38,17 +38,24 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       box-shadow: var(--shadow);
-      padding: 34px 20px 26px;
+      padding: 34px 20px 36px;
       text-align:center;
     }
 
     h1{
-      margin: 0 0 6px 0;
+      margin: 0 0 4px 0;
       font-size: clamp(30px, 4vw, 46px);
     }
 
+    .availability{
+      margin: 0 auto 10px auto;
+      font-size: 14px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
     .sub{
-      margin: 0 auto 36px auto;
+      margin: 0 auto 34px auto;
       max-width: 820px;
       font-style: italic;
       color: var(--muted);
@@ -58,7 +65,7 @@
     /* ===== Context ===== */
     .context{
       width: min(860px, 96%);
-      margin: 0 auto 22px auto;
+      margin: 0 auto 28px auto;
       text-align:center;
       color: rgba(15,71,97,0.92);
     }
@@ -70,33 +77,10 @@
     }
 
     .context p{
-      margin: 0 auto 0 auto;
+      margin: 0;
       max-width: 860px;
       font-size: 15.5px;
       line-height: 1.55;
-    }
-
-    .notice{
-      width: min(860px, 96%);
-      margin: 12px auto 24px auto;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: rgba(15,71,97,0.03);
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-      text-align:center;
-    }
-
-    .notice a{
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(15,71,97,0.28);
-    }
-
-    .notice a:hover{
-      border-bottom-color: rgba(15,71,97,0.55);
     }
 
     /* ===== Circle Layout ===== */
@@ -132,17 +116,16 @@
       box-shadow: var(--shadowHover);
     }
 
-    /* Circle positions + stacking */
-    .b1  { transform: translate(-50%,-50%) rotate(0deg)   translate(0,-360px); z-index:20; }
-    .b2  { transform: translate(-50%,-50%) rotate(36deg)  translate(0,-360px); z-index:19; }
-    .b3  { transform: translate(-50%,-50%) rotate(72deg)  translate(0,-360px); z-index:18; }
-    .b4  { transform: translate(-50%,-50%) rotate(108deg) translate(0,-360px); z-index:17; }
-    .b5  { transform: translate(-50%,-50%) rotate(144deg) translate(0,-360px); z-index:16; }
-    .b6  { transform: translate(-50%,-50%) rotate(180deg) translate(0,-360px); z-index:15; }
-    .b7  { transform: translate(-50%,-50%) rotate(216deg) translate(0,-360px); z-index:14; }
-    .b8  { transform: translate(-50%,-50%) rotate(252deg) translate(0,-360px); z-index:13; }
-    .b9  { transform: translate(-50%,-50%) rotate(288deg) translate(0,-360px); z-index:12; }
-    .b10 { transform: translate(-50%,-50%) rotate(324deg) translate(0,-360px); z-index:11; }
+    .b1  { transform: translate(-50%,-50%) rotate(0deg)   translate(0,-360px); }
+    .b2  { transform: translate(-50%,-50%) rotate(36deg)  translate(0,-360px); }
+    .b3  { transform: translate(-50%,-50%) rotate(72deg)  translate(0,-360px); }
+    .b4  { transform: translate(-50%,-50%) rotate(108deg) translate(0,-360px); }
+    .b5  { transform: translate(-50%,-50%) rotate(144deg) translate(0,-360px); }
+    .b6  { transform: translate(-50%,-50%) rotate(180deg) translate(0,-360px); }
+    .b7  { transform: translate(-50%,-50%) rotate(216deg) translate(0,-360px); }
+    .b8  { transform: translate(-50%,-50%) rotate(252deg) translate(0,-360px); }
+    .b9  { transform: translate(-50%,-50%) rotate(288deg) translate(0,-360px); }
+    .b10 { transform: translate(-50%,-50%) rotate(324deg) translate(0,-360px); }
 
     .center{
       position:absolute;
@@ -150,7 +133,6 @@
       left:50%;
       width:230px;
       transform: translate(-50%,-50%);
-      z-index:40;
     }
 
     /* ===== Modal ===== */
@@ -203,10 +185,8 @@
       padding:22px 20px;
       background:rgba(15,71,97,0.04);
       border-radius:10px;
-      text-align:center;
       font-size:15.5px;
       line-height:1.55;
-      color: rgba(15,71,97,0.92);
     }
 
     .quote span{
@@ -217,7 +197,7 @@
     }
 
     .footer{
-      margin-top:18px;
+      margin-top:22px;
       font-size:13px;
       color:var(--muted);
     }
@@ -225,10 +205,6 @@
     .footer a{
       color:var(--ink);
       text-decoration:none;
-      border-bottom:1px solid rgba(15,71,97,0.28);
-    }
-    .footer a:hover{
-      border-bottom-color: rgba(15,71,97,0.55);
     }
   </style>
 </head>
@@ -237,9 +213,10 @@
 <main class="wrap">
 <section class="card">
   <h1>Thirty Three Keys</h1>
+  <div class="availability">Book One preview available</div>
   <p class="sub">Click a cover to open its preview.</p>
 
-  <div class="context" aria-label="Series overview">
+  <div class="context">
     <h2>A multi-volume educational series with an integrated teaching framework</h2>
     <p>
       <em>Thirty Three Keys</em> is a multi-volume educational series on digital trust and institutional stability, designed as a structured learning sequence.
@@ -247,34 +224,24 @@
     </p>
   </div>
 
-  <div class="notice" aria-label="Book One preview notice">
-    Book One preview available now:
-    <a href="Thirty%20Three%20Keys%20-%20Book%201%20Preview.pdf" target="_blank" rel="noopener">Download PDF</a>
-  </div>
-
   <div class="circle">
-
-    <!-- Book One -->
-    <a class="book b1" href="Thirty%20Three%20Keys%20-%20Book%201%20Preview.pdf" target="_blank" rel="noopener">
+    <a class="book b1" href="Thirty%20Three%20Keys%20-%20Book%201%20Preview.pdf" target="_blank">
       <img src="covers/1.png" alt="Book One Preview">
     </a>
 
-    <!-- Books 2–10 -->
-    <div class="book b2" onclick="openModal('Book Two')"><img src="covers/2.png" alt="Book Two (Coming Soon)"></div>
-    <div class="book b3" onclick="openModal('Book Three')"><img src="covers/3.png" alt="Book Three (Coming Soon)"></div>
-    <div class="book b4" onclick="openModal('Book Four')"><img src="covers/4.png" alt="Book Four (Coming Soon)"></div>
-    <div class="book b5" onclick="openModal('Book Five')"><img src="covers/5.png" alt="Book Five (Coming Soon)"></div>
-    <div class="book b6" onclick="openModal('Book Six')"><img src="covers/6.png" alt="Book Six (Coming Soon)"></div>
-    <div class="book b7" onclick="openModal('Book Seven')"><img src="covers/7.png" alt="Book Seven (Coming Soon)"></div>
-    <div class="book b8" onclick="openModal('Book Eight')"><img src="covers/8.png" alt="Book Eight (Coming Soon)"></div>
-    <div class="book b9" onclick="openModal('Book Nine')"><img src="covers/9.png" alt="Book Nine (Coming Soon)"></div>
-    <div class="book b10" onclick="openModal('Book Ten')"><img src="covers/10.png" alt="Book Ten (Coming Soon)"></div>
+    <div class="book b2" onclick="openModal('Book Two')"><img src="covers/2.png"></div>
+    <div class="book b3" onclick="openModal('Book Three')"><img src="covers/3.png"></div>
+    <div class="book b4" onclick="openModal('Book Four')"><img src="covers/4.png"></div>
+    <div class="book b5" onclick="openModal('Book Five')"><img src="covers/5.png"></div>
+    <div class="book b6" onclick="openModal('Book Six')"><img src="covers/6.png"></div>
+    <div class="book b7" onclick="openModal('Book Seven')"><img src="covers/7.png"></div>
+    <div class="book b8" onclick="openModal('Book Eight')"><img src="covers/8.png"></div>
+    <div class="book b9" onclick="openModal('Book Nine')"><img src="covers/9.png"></div>
+    <div class="book b10" onclick="openModal('Book Ten')"><img src="covers/10.png"></div>
 
-    <!-- Teacher’s Guide -->
     <div class="center book" onclick="openModal('Master Class Teaching Guide')">
-      <img src="covers/11.png" alt="Master Class Teaching Guide (Coming Soon)">
+      <img src="covers/11.png">
     </div>
-
   </div>
 
   <blockquote class="quote">
@@ -283,17 +250,16 @@
   </blockquote>
 
   <div class="footer">
-    Inquiries: <a href="mailto:info@thirtythreekeys.com">info@thirtythreekeys.com</a><br>
+    Inquiries: <a href="mailto:info@thirtythreekeys.com">info@thirtythreekeys.com</a><br><br>
     © <span id="year"></span> Thirty Three Keys
   </div>
 </section>
 </main>
 
-<!-- Modal -->
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal" id="modal">
   <div class="modal-content">
     <h2 id="modalTitle">Coming Soon</h2>
-    <p id="modalText">This volume will be available soon. Book One is available for preview now.</p>
+    <p>Book One is available for preview now.</p>
     <button class="modal-close" onclick="closeModal()">Close</button>
   </div>
 </div>
@@ -302,28 +268,13 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 
   function openModal(label){
-    var title = "Coming Soon";
-    if(label && typeof label === "string"){
-      title = label + " – Coming Soon";
-    }
-    document.getElementById("modalTitle").textContent = title;
-    document.getElementById("modalText").textContent = "This volume will be available soon. Book One is available for preview now.";
+    document.getElementById("modalTitle").textContent = label + " – Coming Soon";
     document.getElementById("modal").style.display = "flex";
   }
 
   function closeModal(){
     document.getElementById("modal").style.display = "none";
   }
-
-  // Close modal when clicking the overlay
-  document.getElementById("modal").addEventListener("click", function(e){
-    if(e.target === this) closeModal();
-  });
-
-  // Close modal with Escape
-  document.addEventListener("keydown", function(e){
-    if(e.key === "Escape") closeModal();
-  });
 </script>
 
 </body>
