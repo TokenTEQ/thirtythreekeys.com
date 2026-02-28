@@ -65,7 +65,7 @@
     /* ===== Context ===== */
     .context{
       width: min(860px, 96%);
-      margin: 0 auto 44px auto; /* increased bottom spacing */
+      margin: 0 auto 44px auto;
       text-align:center;
       color: rgba(15,71,97,0.92);
     }
@@ -79,7 +79,7 @@
     .context p{
       margin: 0 auto 6px auto;
       max-width: 860px;
-      font-size: 16.75px; /* +0.5px from original 15.5px */
+      font-size: 16.75px;
       line-height: 1.55;
     }
 
@@ -211,20 +211,30 @@
     @media (max-width: 980px) {
       body { overflow-x: hidden; }
 
+      /* Stop vertical centering on mobile so the layout feels centered naturally */
+      .wrap{
+        align-items: flex-start;
+      }
+
+      /* Ensure card stays centered */
+      .card{
+        margin: 0 auto;
+      }
+
       .circle{
         width: min(92vw, 920px);
         height: min(92vw, 920px);
-        padding-top: 16px;
         margin: 0 auto 28px auto;
-        --ring: clamp(165px, 34vw, 360px); /* responsive radius, caps at desktop 360px */
+        padding-top: 0; /* remove subtle visual shift */
+        --ring: clamp(150px, 32vw, 360px); /* slightly tighter and responsive */
       }
 
       .book{
-        width: clamp(92px, 18vw, 170px); /* responsive cover size, caps at desktop 170px */
+        width: clamp(88px, 17vw, 170px);
       }
 
       .center{
-        width: clamp(130px, 26vw, 230px); /* responsive center size, caps at desktop 230px */
+        width: clamp(125px, 25vw, 230px);
       }
 
       .b1  { transform: translate(-50%,-50%) rotate(0deg)   translate(0, calc(-1 * var(--ring))); }
