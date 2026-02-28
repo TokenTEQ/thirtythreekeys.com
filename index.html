@@ -206,6 +206,45 @@
       color:var(--ink);
       text-decoration:none;
     }
+
+    /* ===== Mobile / Narrow screens fix (keeps desktop unchanged) ===== */
+    @media (max-width: 980px) {
+      body { overflow-x: hidden; }
+
+      .circle{
+        width: min(92vw, 920px);
+        height: min(92vw, 920px);
+        padding-top: 16px;
+        margin: 0 auto 28px auto;
+        --ring: clamp(165px, 34vw, 360px); /* responsive radius, caps at desktop 360px */
+      }
+
+      .book{
+        width: clamp(92px, 18vw, 170px); /* responsive cover size, caps at desktop 170px */
+      }
+
+      .center{
+        width: clamp(130px, 26vw, 230px); /* responsive center size, caps at desktop 230px */
+      }
+
+      .b1  { transform: translate(-50%,-50%) rotate(0deg)   translate(0, calc(-1 * var(--ring))); }
+      .b2  { transform: translate(-50%,-50%) rotate(36deg)  translate(0, calc(-1 * var(--ring))); }
+      .b3  { transform: translate(-50%,-50%) rotate(72deg)  translate(0, calc(-1 * var(--ring))); }
+      .b4  { transform: translate(-50%,-50%) rotate(108deg) translate(0, calc(-1 * var(--ring))); }
+      .b5  { transform: translate(-50%,-50%) rotate(144deg) translate(0, calc(-1 * var(--ring))); }
+      .b6  { transform: translate(-50%,-50%) rotate(180deg) translate(0, calc(-1 * var(--ring))); }
+      .b7  { transform: translate(-50%,-50%) rotate(216deg) translate(0, calc(-1 * var(--ring))); }
+      .b8  { transform: translate(-50%,-50%) rotate(252deg) translate(0, calc(-1 * var(--ring))); }
+      .b9  { transform: translate(-50%,-50%) rotate(288deg) translate(0, calc(-1 * var(--ring))); }
+      .b10 { transform: translate(-50%,-50%) rotate(324deg) translate(0, calc(-1 * var(--ring))); }
+    }
+
+    @media (max-width: 420px) {
+      .wrap{ padding: 28px 12px 44px; }
+      .card{ padding: 26px 16px 28px; }
+      .availability{ margin-bottom: 18px; }
+      .context{ margin-bottom: 28px; }
+    }
   </style>
 </head>
 
